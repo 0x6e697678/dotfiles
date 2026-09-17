@@ -53,7 +53,13 @@ Place fonts in `~/.local/share/fonts` then run:
 fc-cache -fv
 ```
 
-### Awesome fonts
+> [!INFO]
+>
+> Dank Mono P is my patched version of Dank Mono, with added Vietnamese glyphs and Nerd Font icons, and fixes for ligature rendering issues.
+
+### Other fonts I use
+
+- Inter: https://fonts.google.com/specimen/Inter
 
 - Maple Mono: https://github.com/subframe7536/maple-font.
 - More nerd fonts: https://github.com/ryanoasis/nerd-fonts.

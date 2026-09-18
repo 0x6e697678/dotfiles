@@ -51,6 +51,7 @@ alias stream='mpv av://v4l2:/dev/video4 --fullscreen --demuxer-lavf-o=input_form
 
 # Misc
 alias load-fonts='fc-cache -fv'
+alias usage='codexbar usage'
 
 alias evnup='sudo ipsec restart && sleep 1 && sudo ipsec up evnfc-dc && sudo resolvconf -u'
 alias evndn='sudo ipsec down evnfc-dc'

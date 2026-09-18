@@ -7,46 +7,56 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "button": false,
+    "notify_when_agent_waiting": "primary_screen",
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "openai/gpt-oss-120b",
+    },
+    "commit_message_model": {
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "openai/gpt-oss-120b",
+    },
+  },
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false,
+      "show_go_models": false,
+    },
+  },
+  "context_servers": {
+    "figma-mcp-go": {
+      "enabled": false,
+      "remote": false,
+      "command": "npx",
+      "args": ["@vkhanhqui/figma-mcp-go@latest"],
+      "env": {},
+    },
+  },
+
   // Appearance
-  "ui_font_family": "DankMono Nerd Font",
-  "buffer_font_family": "DankMono Nerd Font",
-  "markdown_preview_font_family": "Maple Mono",
-  "markdown_preview_code_font_family": "Maple Mono",
+  "ui_font_family": "Dank Mono P",
+  "buffer_font_family": "Dank Mono P",
   "ui_font_size": 18,
   "agent_buffer_font_size": 18,
   "git_commit_buffer_font_size": 18,
-  "markdown_preview_font_size": 20,
   "buffer_font_size": 18,
   "buffer_line_height": {
     "custom": 2,
   },
-  "icon_theme": "Light Charmed Icons",
-  "theme": "Vesper",
+  "markdown_preview": {
+    "font_size": 19,
+    "font_family": "Inter",
+    "code_font_family": "Dank Mono P",
+  },
+  "icon_theme": "Zed (Default)",
+  "theme": "Everforest Void",
   "theme_overrides": {
     "Vesper": {
-      // "background.appearance": "blurred",
-      // "border": "#00000000",
-      // "border.variant": "#00000000",
-      // "border.disabled": "#00000000",
-      // "background": "#101010e6",
-      // "element.background": "#00000000",
-      // "status_bar.background": "#00000000",
-      // "title_bar.background": "#101010e6",
-      // "toolbar.background": "#00000000",
-      // "tab_bar.background": "#00000000",
-      // "tab.inactive_background": "#00000000",
-      // "panel.background": "#00000000",
-      // "scrollbar.track.background": "#00000000",
-      // "scrollbar.track.border": "#00000000",
-      // "editor.background": "#00000000",
-      // "editor.gutter.background": "#00000000",
-      // "editor.subheader.background": "#00000000",
-      // "editor.active_line.background": "#00000000",
-      // "editor.highlighted_line.background": "#00000000",
-      // "terminal.background": "#00000000",
-
       "title_bar.inactive_background": "#101010",
-
       "terminal.foreground": "#ffffff",
       "terminal.ansi.white": "#ffffff",
       "terminal.ansi.green": "#99FFE4",
@@ -66,8 +76,9 @@
   "window_decorations": "server",
   "title_bar": {
     "show_branch_status_icon": false,
-    "show_branch_name": false,
-    "show_project_items": false,
+    "show_project_items": true,
+    "show_branch_name": true,
+    "show_worktree_name": false,
     "show_user_picture": false,
     "show_user_menu": false,
     "show_sign_in": false,
@@ -80,8 +91,10 @@
   },
   "status_bar": {
     "experimental.show": false,
+    "show_active_file": true,
   },
   "project_panel": {
+    "button": false,
     "auto_open": {
       "on_create": false,
       "on_drop": false,
@@ -101,19 +114,41 @@
     },
   },
   "git_panel": {
+    "button": false,
     "tree_view": true,
     "commit_title_max_length": 72,
   },
+  "diff_view_style": "split",
   "terminal": {
+    "button": false,
     "default_height": 500,
     "cursor_shape": "bar",
-    "font_family": "Dank Mono",
+    "font_family": "Dank Mono P",
     "font_features": {
-      "liga": false,
+      "liga": true,
+      "calt": true,
     },
     "scrollbar": {
       "show": "never",
     },
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "outline_panel": {
+    "button": false,
+  },
+  "debugger": {
+    "button": false,
+  },
+  "diagnostics": {
+    "button": false,
+  },
+  "global_lsp_settings": {
+    "button": false,
+  },
+  "search": {
+    "button": false,
   },
   "file_finder": {
     "modal_max_width": "small",
@@ -144,7 +179,10 @@
     "runnables": false,
     "min_line_number_digits": 0,
   },
-  "cursor_blink": true,
+  "cursor_blink": false,
+  "cursor_animation": {
+    "enabled": true,
+  },
   "hide_mouse": "on_typing_and_action",
 
   // Behaviors
@@ -156,6 +194,7 @@
   },
   "format_on_save": "on",
   "cli_default_open_behavior": "new_window",
+  "default_open_behavior": "new_window",
   "close_on_file_delete": true,
   "when_closing_with_no_tabs": "keep_window_open",
   "restore_on_file_reopen": false,
@@ -165,16 +204,7 @@
   },
   "show_edit_predictions": false,
   "edit_predictions": {
-    "provider": "copilot",
-  },
-  "context_servers": {
-    "figma-mcp-go": {
-      "enabled": false,
-      "remote": false,
-      "command": "npx",
-      "args": ["@vkhanhqui/figma-mcp-go@latest"],
-      "env": {},
-    },
+    "provider": "none",
   },
   "drag_and_drop_selection": {
     "enabled": false,
@@ -207,7 +237,7 @@
     "highlight_on_yank_duration": 200,
     "use_regex_search": false,
     "use_smartcase_find": true,
-    "use_system_clipboard": "always",
+    "use_system_clipboard": "on_yank",
   },
 
   // Languages
@@ -227,7 +257,14 @@
     "C++": {
       "tab_size": 4,
     },
+    "Rust": {
+      "tab_size": 4,
+    },
     "Python": {
+      "tab_size": 4,
+      "language_servers": ["ruff", "!pyright"],
+    },
+    "Shell Script": {
       "tab_size": 4,
     },
   },

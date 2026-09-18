@@ -9,28 +9,50 @@
   {
     "context": "vim_mode == normal || vim_mode == visual || EmptyPane || SharedScreen || (ProjectPanel && !editing)",
     "bindings": {
-      "g s":["vim::PushAddSurrounds", {}],
+      "g s": ["vim::PushAddSurrounds", {}],
 
       "space": null,
       "space space": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
       "space t": "terminal_panel::ToggleFocus",
 
+      // +search
+      "space s": null,
+      "space s s": "project_symbols::Toggle",
+      "space s o": "outline::Toggle",
+      "space s g": "text_finder::Toggle",
+      "space s p": "pane::DeploySearch",
+
       // +git
+      "space g": null,
       "space g g": "git_panel::ToggleFocus",
       "space g h": "git::FileHistory",
       "space g b": "git::Blame",
       "space g l": ["task::Spawn", { "task_name": "Lazygit" }],
 
       // +quit
+      "space q": null,
       "space q q": "workspace::CloseWindow",
       "space q a": "zed::Quit",
     },
   },
   {
+    "context": "(vim_mode == normal || vim_mode == visual) || (!Editor && !Terminal) || (ProjectPanel && !editing)",
+    "bindings": {
+      ";": "command_palette::Toggle",
+    },
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "H": "vim::StartOfLineDownward",
+      "L": "vim::EndOfLineDownward",
+    },
+  },
+  {
     "context": "vim_mode == insert",
     "bindings": {
-      "ctrl-\\": "copilot::Suggest",
+      // "ctrl-\\": "copilot::Suggest",
       "ctrl-i": "assistant::InlineAssist",
       "ctrl-v": "editor::Paste",
     },
@@ -43,13 +65,17 @@
 
       "s": "vim::HelixJumpToWord",
 
+      "g p": ["workspace::SendKeystrokes", "\" 0 p"],
+      "g P": ["workspace::SendKeystrokes", "\" 0 P"],
+    },
+  },
+  {
+    "context": "!menu && (vim_mode == normal || vim_mode == visual || vim_operator == y || vim_operator == c || vim_operator == d)",
+    "bindings": {
       "w": "vim::NextSubwordStart",
       "b": "vim::PreviousSubwordStart",
       "e": "vim::NextSubwordEnd",
       "g e": "vim::PreviousSubwordEnd",
-
-      "g p": ["workspace::SendKeystrokes", "\" 0 p"],
-      "g P": ["workspace::SendKeystrokes", "\" 0 P"],
     },
   },
   {
@@ -76,13 +102,13 @@
     "context": "vim_operator == i",
     "bindings": {
       "g": "vim::EntireFile",
-    }
+    },
   },
   {
     "context": "vim_operator == d",
     "bindings": {
       "m": ["workspace::SendKeystrokes", ": d e l m space"],
-    }
+    },
   },
   // {
   //   "context": "vim_operator == y",
@@ -129,6 +155,9 @@
       "z": "project_panel::CollapseAllEntries",
       "o": "project_panel::Open",
       "backspace": "pane::CloseActiveItem",
+      "u": "project_panel::Undo",
+      "ctrl-r": "project_panel::Redo",
+      "/": null,
     },
   },
   {
@@ -138,31 +167,36 @@
       "g m": ["workspace::SendKeystrokes", "`"],
       "g M": ["workspace::SendKeystrokes", "'"],
 
+      "space `": [
+        "action::Sequence",
+        ["tab_switcher::Toggle", ["workspace::SendKeystrokes", "enter"]],
+      ],
+
       // +file/find
+      "space f": null,
       "space f f": "file_finder::Toggle",
       "space f b": "tab_switcher::ToggleAll",
       "space f n": "workspace::NewFile",
       // +indentation
+      "space f i": null,
       "space f i t": "editor::ConvertIndentationToTabs",
       "space f i s": "editor::ConvertIndentationToSpaces",
 
-      // +search
-      "space s s": "project_symbols::Toggle",
-      "space s o": "outline::Toggle",
-      "space s g": "text_finder::Toggle",
-      "space s p": "pane::DeploySearch",
-
       // +tabs
+      "space tab": null,
       "space tab d": "pane::CloseAllItems",
       "space tab D": "workspace::CloseAllItemsAndPanes",
+      "space tab o": "workspace::CloseInactiveTabsAndPanes",
 
       // +windows
+      "space w": null,
       "space w n": "workspace::NewWindow",
       "space w r": "workspace::Reload",
       "space w h": "pane::SplitDown",
       "space w v": "pane::SplitRight",
 
       // +buffers
+      "space b": null,
       "space b b": [
         "action::Sequence",
         ["tab_switcher::Toggle", ["workspace::SendKeystrokes", "enter"]],
@@ -177,6 +211,7 @@
       "space b y": "workspace::CopyRelativePath",
 
       // +code/chat/command
+      "space c": null,
       "space c p": "command_palette::Toggle",
       "space c c": "agent::FocusAgent",
       "space c i": "assistant::InlineAssist",
@@ -187,19 +222,23 @@
       "space c s": ["task::Spawn", { "task_name": "CodeSnap" }],
 
       // +diagnostics
+      "space d": null,
       "space d d": "diagnostics::Deploy",
       "space d n": "editor::GoToDiagnostic",
       "space d N": "editor::GoToPreviousDiagnostic",
 
       // +git
+      "space g": null,
       "space g d": "editor::ToggleSelectedDiffHunks",
       "space g n": "editor::GoToHunk",
       "space g N": "editor::GoToPreviousHunk",
       "space g u": "git::Restore",
 
       // +text
+      "space x": null,
       "space x s": "editor::SortLinesCaseInsensitive",
       // +transform
+      "space x t": null,
       "space x t c": "editor::ConvertToLowerCamelCase",
       "space x t k": "editor::ConvertToKebabCase",
       "space x t P": "editor::ConvertToUpperCamelCase",
@@ -211,8 +250,31 @@
       "space x t T": "editor::ConvertToTitleCase",
 
       // +ui
+      "space u": null,
       "space u m": "markdown::OpenPreview",
       "space u M": "markdown::OpenPreviewToTheSide",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      // +refactor
+      "space r": null,
+      "space r n": [
+        "workspace::SendKeystrokes",
+        "y i w : % s / ctrl-v / / g i left left left",
+      ],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      // +refactor
+      "space r": null,
+      "space r n": [
+        "workspace::SendKeystrokes",
+        "y : % s / ctrl-v / / g i left left left",
+      ],
     },
   },
   {
@@ -225,6 +287,7 @@
     "context": "!Terminal && ((menu && !showing_completions && !editing) || EmptyPane || SharedScreen || vim_mode == normal || vim_mode == visual)",
     "bindings": {
       // +ui
+      "space u escape": "editor::Cancel",
       "space u h": "workspace::ToggleLeftDock",
       "space u H": "multi_workspace::ToggleWorkspaceSidebar",
       "space u j": "workspace::ToggleBottomDock",
@@ -250,6 +313,18 @@
   {
     "context": "Terminal",
     "bindings": {
+      "ctrl-v": "terminal::Paste",
+    },
+  },
+  {
+    "context": "Terminal && selection",
+    "bindings": {
+      "ctrl-c": "terminal::Copy",
+    },
+  },
+  {
+    "context": "Terminal && !AgentPanel",
+    "bindings": {
       "ctrl-t": "workspace::NewTerminal",
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-[": "pane::ActivatePreviousItem",
@@ -262,6 +337,31 @@
       "ctrl-t": null,
       "ctrl-n": null,
       "ctrl-p": null,
+      "ctrl-g": null,
+      "ctrl-h": "multi_workspace::FocusWorkspaceSidebar",
+    },
+  },
+  {
+    "context": "AgentPanel || ThreadSwitcher",
+    "bindings": {
+      "ctrl-[": "agents_sidebar::ToggleThreadSwitcher",
+      "ctrl-]": [
+        "agents_sidebar::ToggleThreadSwitcher",
+        { "select_last": true },
+      ],
+    },
+  },
+  {
+    "context": "ThreadsSidebar || ThreadsSidebar > Editor",
+    "bindings": {
+      "ctrl-l": "multi_workspace::CloseWorkspaceSidebar",
+      "ctrl-t": "agent::NewTerminalThread",
+      "ctrl-w": "agent::ArchiveSelectedThread",
+    },
+  },
+  {
+    "context": "AgentPanel && AcpThread",
+    "bindings": {
       "ctrl-g n": "agent::ToggleNewThreadMenu",
       "ctrl-g m": "agent::ToggleModelSelector",
       "ctrl-g t": "agent::ToggleThinkingEffortMenu",
@@ -285,14 +385,25 @@
     },
   },
   {
-    "context": "",
+    "context": "!AgentPanel",
     "bindings": {
       "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-k": "workspace::ActivatePaneUp",
+    },
+  },
+  {
+    "context": "!ThreadsSidebar",
+    "bindings": {
       "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "",
+    "bindings": {
       "ctrl-/": "workspace::ToggleBottomDock",
       "ctrl-shift-b": "multi_workspace::ToggleWorkspaceSidebar",
     },
   },
 ]
+

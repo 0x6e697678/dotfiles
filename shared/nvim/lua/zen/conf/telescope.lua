@@ -28,6 +28,7 @@ return {
         "--no-ignore",
         "--exclude", ".git",
         "--exclude", "node_modules",
+        "--exclude", ".venv",
         "--exclude", "dist",
         "--exclude", "build",
         "--exclude", ".next",

@@ -37,6 +37,15 @@ chmod +x linux/bootstrap.sh
 linux/bootstrap.sh
 ```
 
+## Set theme
+
+Run `set-theme.sh` to recreate the symbolic links for theme configs.
+
+```bash
+chmod +x linux/set-theme.sh
+linux/set-theme.sh boreal
+```
+
 ## Font and Cursor
 
 > [!INFO]

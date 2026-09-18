@@ -18,6 +18,8 @@ default = "zen"
 
 [appearance]
 hide_logo = true
+power_buttons_position = "hidden"
+scheme_selector_position = "hidden"
 
 [output]
 name = "eDP-1"

@@ -4,7 +4,7 @@
 >
 > This guide assumes that you already have your Windows installed on your PC and the BIOS mode is UEFI.
 
-> [!INFO]
+> [!TIP]
 >
 > Reference: https://www.youtube.com/watch?v=8WVk2ntV9Mo
 
@@ -25,4 +25,4 @@ Open Rufus:
 - Leave the rest as is, click Start, then spam the OK button.
 - Once done, you're ready to dual-boot.
 
-_..to be continued.._
+_\_to be continued\__

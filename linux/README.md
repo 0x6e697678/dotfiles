@@ -24,7 +24,7 @@ linux/set-theme.sh boreal
 
 ## Font and Cursor
 
-> [!INFO]
+> [!TIP]
 >
 > Use `nwg-look` for easier GTK settings tweaking.
 
@@ -38,7 +38,7 @@ Place fonts in `~/.local/share/fonts` then run:
 fc-cache -fv
 ```
 
-> [!INFO]
+> [!TIP]
 >
 > Dank Mono P is my patched version of Dank Mono, with added Vietnamese glyphs and Nerd Font icons, and fixes for ligature rendering issues.
 

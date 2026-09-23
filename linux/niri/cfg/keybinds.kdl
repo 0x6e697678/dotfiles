@@ -11,9 +11,9 @@ binds {
   Mod+B       { spawn "zen-browser"; }
   Mod+Shift+B { spawn "zen-browser" "--private-window"; }
   Mod+E       { spawn "nautilus"; }
-  Mod+Period  { spawn-sh "noctalia msg panel-toggle launcher '/emo '"; }
+  Mod+Period  { spawn-sh "noctalia msg panel-toggle liamwh/emoji-picker:desktop"; }
   Mod+A       { spawn-sh "noctalia msg panel-toggle launcher '/tr vi '"; }
-  Mod+Shift+A { spawn-sh "noctalia msg panel-toggle launcher \"/tr vi $(noctalia msg clipboard-text)\""; }
+  Mod+Shift+A { spawn-sh "wtype -M ctrl c -m ctrl; sleep 0.1; text=$(wl-paste); noctalia msg panel-toggle launcher \"/tr vi $text\""; }
   Mod+V       { spawn-sh "noctalia msg panel-toggle clipboard"; }
   Super+Grave { spawn-sh "translator translate"; }
   Super+1     { spawn-sh "translator show-last"; }
@@ -129,8 +129,8 @@ binds {
 
   // ─── Exit / Power ───
   // Ctrl+Alt+Delete   { quit; } // Also quits Niri
-  Mod+Shift+P       { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
-  Mod+O             repeat=false { toggle-overview; }
-  Super+Alt+L       { spawn-sh "noctalia msg session lock"; }
-  Super+Alt+Shift+L { spawn-sh "noctalia msg session lock-and-suspend"; }
+  Mod+Shift+P   { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
+  Mod+O         repeat=false { toggle-overview; }
+  Super+L       { spawn-sh "noctalia msg session lock"; }
+  Super+Shift+L { spawn-sh "noctalia msg session lock-and-suspend"; }
 }

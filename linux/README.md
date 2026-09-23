@@ -2,31 +2,7 @@
 
 ## Dual-booting with Windows
 
-> [!NOTE]
->
-> This guide assumes that you already have your Windows installed on your PC and the BIOS mode is UEFI.
-
-> [!INFO]
->
-> Reference: https://www.youtube.com/watch?v=8WVk2ntV9Mo
-
-Make a room for your CachyOS using Windows's Disk Management.
-
-Go to [CachyOS's Download page](https://cachyos.org/download/), download the Desktop Edition with from Direct source. You will get an ISO file from this step.
-
-Download [Rufus](https://rufus.ie/en/#download) (portable version is supported).
-
-Connect your USB to your PC (make sure to cleanup your USB first).
-
-Open Rufus:
-- Device: Choose your USB.
-- Boot selection, choose the ISO file you've downloaded.
-- Partition scheme: GPT.
-- Target system: UEFI (non CSM).
-- Leave the rest as is, click Start, then spam the OK button.
-- Once done, you're ready to dual-boot.
-
-*..to be continued..*
+For more details, see `_docs/dual-boot/CachyOS_Windows.md`.
 
 ## Bootstrap
 
@@ -52,9 +28,9 @@ linux/set-theme.sh boreal
 >
 > Use `nwg-look` for easier GTK settings tweaking.
 
-## Fonts
+### Font
 
-### Installation
+#### Installation
 
 Place fonts in `~/.local/share/fonts` then run:
 
@@ -66,20 +42,19 @@ fc-cache -fv
 >
 > Dank Mono P is my patched version of Dank Mono, with added Vietnamese glyphs and Nerd Font icons, and fixes for ligature rendering issues.
 
-### Other fonts I use
+#### Other fonts I use
 
 - Inter: https://fonts.google.com/specimen/Inter
-
 - Maple Mono: https://github.com/subframe7536/maple-font.
 - More nerd fonts: https://github.com/ryanoasis/nerd-fonts.
 
-## Cursors
+### Cursor
 
-### Installation
+#### Installation
 
-Place cursor themes in `/usr/share/icons` then config your DE, WM.
+Place cursor themes in `/usr/share/icons` then config your DE/WM.
 
-### Awesome cursor themes
+#### Awesome cursor themes
 
 - Bibata: https://github.com/ful1e5/Bibata_Cursor.
 - Google Dot: https://github.com/ful1e5/Google_Cursor.

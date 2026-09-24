@@ -2,6 +2,8 @@
 
 This repository contains my personal dotfiles and configurations. It is structured into different directories to keep OS-specific and shared configurations organized.
 
+If you need help or want to chat, message me at my Discord [server](https://discord.gg/SZntdmMsUW).
+
 ## Structure
 
 - [`linux/`](./linux/) — Linux-specific configurations and bootstrap scripts.
